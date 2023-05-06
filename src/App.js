@@ -1,9 +1,11 @@
 import './App.css';
 import Todolist from './components/Todolist'
+import HeaderComponent from './components/HeaderComponent'
+
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <HeaderComponent />
      <Todolist />
     </div>
