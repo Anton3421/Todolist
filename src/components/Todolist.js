@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import TodoTable from './TodoTable';
-// JOKAISESSA TIEDOSTOSSA SAA JA PITÄÄ OLLA YKSI EXPORT DEFAULT
+
 export default function Todolist() {
-    //STATE YKSITTÄISEN TODO-ITEMIN SISÄLLÖKSI
-    //STATE VAIHTOEHDOT ON '', 0 TAI []
+
     const [todo, setTodo] = useState({ desc: '', date: '' });
     const [todos, setTodos] = useState([]);
 
@@ -17,8 +16,7 @@ export default function Todolist() {
         setTodos([...todos, todo]);
     }
     
-    const deleteTodo = (event) => {
-        const index = parseInt(event.target.id)
+    const deleteTodo = (index) => {
         
         setTodos(todos.filter((todo, i) => i !== index))
     }
@@ -37,20 +35,8 @@ export default function Todolist() {
 
                 </form>
             </div>
-            <table>
-                <tbody>
-                    <tr><th>Date</th><th>Description</th></tr>
-                    {
-                        todos.map((todo, index) =>
-                            <tr key={index}>
-                                <td>{todo.date}</td>
-                                <td>{todo.todo}</td>
-                                <td><button id={index} onClick={deleteTodo}>Delete</button></td>
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+            
+            <TodoTable todos={todos} deleteTodo={deleteTodo} />
         </div>
             
 
